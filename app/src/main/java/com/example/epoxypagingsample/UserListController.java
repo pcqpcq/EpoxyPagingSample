@@ -1,16 +1,16 @@
 package com.example.epoxypagingsample;
 
+import com.airbnb.epoxy.paging.PagingEpoxyController;
+
 import java.util.List;
 
 public class UserListController extends PagingEpoxyController<User> {
         @Override
         protected void buildModels(List<User> list) {
-            int size = list.size();
-            for (int i = 0; i < size; i++) {
-                User user = list.get(i);
+            for (User user : list) {
                 new PagingViewModel_()
                         .id(user.getUid())
-                        .index("index > " + i)
+                        .index("uid > " + user.getUid())
                         .addTo(this);
             }
         }
